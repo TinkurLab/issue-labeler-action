@@ -1,4 +1,4 @@
-# 🏷 🏷 🏷 Issue Labeler - GitHub Action
+# 🏷 🏷 🏷 Issue Bulk Labeler - GitHub Action
 
 A [GitHub Action](https://github.com/features/actions) to add bulk labels when creating a new issue.
 

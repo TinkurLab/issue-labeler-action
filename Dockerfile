@@ -1,6 +1,6 @@
 FROM node:8-slim
 
-LABEL "com.github.actions.name"="Bulk Labels"
+LABEL "com.github.actions.name"="Issue Bulk Labeler"
 LABEL "com.github.actions.description"="A GitHub Action to bulk add labels when creating a new issue."
 LABEL "com.github.actions.icon"="tag"
 LABEL "com.github.actions.color"="green"
