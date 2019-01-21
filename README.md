@@ -25,11 +25,11 @@ To setup this action:
 
 ```
 workflow "Bulk Issue Labeler" {
-  resolves = ["BulkLabel"]
+  resolves = ["Bulk Label"]
   on = "issues"
 }
 
-action "BulkLabel" {
+action "Bulk Label" {
   uses = "adamzolyak/issue-labeler-action@master"
   secrets = ["GITHUB_TOKEN"]
 }
