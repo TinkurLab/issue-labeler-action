@@ -6,15 +6,15 @@ octokit.authenticate = jest.fn()
 
 describe('getOwner', () => {
   it('should return owner when passed GITHUB_REPOSITORY env variable', () => {
-    const result = helpers.getOwner('waffleio/waffle.io')
-    expect(result).toBe('waffleio')
+    const result = helpers.getOwner('adamzolyak/actions-playground')
+    expect(result).toBe('adamzolyak')
   })
 })
 
 describe('getRepo', () => {
   it('should return repo when passed GITHUB_REPOSITORY env variable', () => {
-    const result = helpers.getRepo('waffleio/waffle.io')
-    expect(result).toBe('waffle.io')
+    const result = helpers.getRepo('adamzolyak/actions-playground')
+    expect(result).toBe('actions-playground')
   })
 })
 
@@ -51,8 +51,8 @@ describe('addLabel', () => {
 
     const result = await helpers.addLabel(
       octokit,
-      'waffleio',
-      'waffle.io',
+      'adamzolyak',
+      'actions-playground',
       '1',
       'Incomplete Tasks'
     )
@@ -79,7 +79,11 @@ describe('getRepoLabels', () => {
       }
     }
 
-    const result = await helpers.getRepoLabels(octokit, 'waffleio', 'waffle.io')
+    const result = await helpers.getRepoLabels(
+      octokit,
+      'adamzolyak',
+      'actions-playground'
+    )
 
     expect(octokit.issues.listLabelsForRepo).toHaveBeenCalledTimes(1)
     expect(result).toBe(repoLabels)
@@ -93,7 +97,11 @@ describe('getRepoLabels', () => {
       }
     }
 
-    const result = await helpers.getRepoLabels(octokit, 'waffleio', 'waffle.io')
+    const result = await helpers.getRepoLabels(
+      octokit,
+      'adamzolyak',
+      'actions-playground'
+    )
 
     expect(octokit.issues.listLabelsForRepo).toHaveBeenCalledTimes(1)
     expect(result).toBe(repoLabels)
