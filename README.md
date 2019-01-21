@@ -1,6 +1,6 @@
 # 🏷 🏷 🏷 Issue Labeler - GitHub Action
 
-A [GitHub Action](https://github.com/features/actions) to add bulk labels when creating a new issue 📝.
+A [GitHub Action](https://github.com/features/actions) to add bulk labels when creating a new issue.
 
 ## How It Works
 
