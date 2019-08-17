@@ -2,9 +2,9 @@
   "action": "opened",
   "issue": {
     "id": 376593094,
-    "number": 27,
-    "title": "newissue3",
+    "number": 73,
+    "title": "new issue",
     "state": "open",
-    "body": "to do\r\n- [ ] thing\r\n- [x] thing\r\n\r\n[bug, que]"
+    "body": "to do\r\n- [ ] thing\r\n- [x] thing\r\n\r\n[bug, api]"
   }
 }

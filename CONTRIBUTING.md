@@ -22,18 +22,20 @@ Test Status: [![CircleCI](https://circleci.com/gh/adamzolyak/issue-labeler-actio
 ### To run action locally
 
 1. `npm install` to install dependencies
-2. create a `dev` file with the following contents:
+2. create a [Personal Access Token](https://github.com/settings/tokens) for testing if needed
+3. create a repository for testing if needed
+4. create a `dev` file with the following contents, updating the token and repository:
 
 ```bash
 export GITHUB_TOKEN="12345"
 export GITHUB_REPOSITORY="adamzolyak/actions-playground"
 export GITHUB_EVENT_PATH="/issue-labeler-action/tests/fixtures/actionTrigger.json"
 
-node index.js
+node app.js
 ```
 
-3. modify contents of [/tests/fixtures/actionTrigger.json](./tests/fixtures/actionTrigger.json) as needed for test data
-4. run `bash dev` to run locally
+5. modify contents of [/tests/fixtures/actionTrigger.json](./tests/fixtures/actionTrigger.json) as needed for test data
+6. run `bash dev` to run locally
 
 ## Debugging
 
