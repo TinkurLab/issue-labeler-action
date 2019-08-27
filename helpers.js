@@ -42,7 +42,7 @@ module.exports.addLabel = function(
     .addLabels({
       owner: eventOwner,
       repo: eventRepo,
-      number: eventIssueNumber,
+      issue_number: eventIssueNumber,
       labels: [label] // ['Incomplete Tasks']
     })
     .then(({ data, headers, status }) => {
