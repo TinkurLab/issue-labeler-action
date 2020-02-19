@@ -1,0 +1,8 @@
+name: "Issue Bulk Labeler"
+description: "Issue Bulk Labeler"
+runs:
+  using: "docker"
+  image: "Dockerfile"
+branding:
+  icon: "tag"
+  color: "green"
