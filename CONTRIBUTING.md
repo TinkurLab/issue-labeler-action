@@ -12,8 +12,6 @@ We'd also love PRs. If you're thinking of a large PR, we advise opening up an is
 
 Tests are written in [Jest](https://jestjs.io/en/). Tests automatically run on check in.
 
-Test Status: [![CircleCI](https://circleci.com/gh/adamzolyak/issue-labeler-action/tree/master.svg?style=svg)](https://circleci.com/gh/adamzolyak/commit-issue-commenter-action/tree/master)
-
 ### To run tests locally
 
 1. run `npm install` to install dependencies
@@ -26,7 +24,7 @@ Test Status: [![CircleCI](https://circleci.com/gh/adamzolyak/issue-labeler-actio
 
 ```bash
 export GITHUB_TOKEN="12345"
-export GITHUB_REPOSITORY="adamzolyak/actions-playground"
+export GITHUB_REPOSITORY="tinkurlab/actions-playground"
 export GITHUB_EVENT_PATH="/issue-labeler-action/tests/fixtures/actionTrigger.json"
 
 node app.js
