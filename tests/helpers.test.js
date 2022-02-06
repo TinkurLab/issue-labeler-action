@@ -18,7 +18,7 @@ describe('getRepo', () => {
   })
 })
 
-describe('getBulkLabels', async () => {
+describe('getBulkLabels', () => {
   it('should return 1 bulk label if 1 bulk label exist in the issue body', async () => {
     const eventIssueBody = 'checklist\r\n- [ ] to do\r\n[bug]'
     const result = helpers.getBulkLabels(eventIssueBody)
