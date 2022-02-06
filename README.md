@@ -48,6 +48,6 @@ If you have suggestions for how this GitHub Action could be improved, or want to
 
 [ISC](LICENSE) © 2021 Adam Zolyak <adam@tinkurlab.com> (www.tinkurlab.com)
 
-![analytics](https://grabify.link/8BXBY8)
+![analytics](https://grabify.link/1WWMV5)
 
 
