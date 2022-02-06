@@ -5,7 +5,7 @@ LABEL "com.github.actions.description"="Bulk add labels when creating an issue"
 LABEL "com.github.actions.icon"="tag"
 LABEL "com.github.actions.color"="green"
 
-LABEL "repository"="http://github.com/adamzolyak/issue-labeler-action"
+LABEL "repository"="http://github.com/tinkurlab/issue-labeler-action"
 LABEL "homepage"="http://www.tinkurlab.com"
 LABEL "maintainer"="Adam Zolyak <adam@tinkurlab.com>"
 
