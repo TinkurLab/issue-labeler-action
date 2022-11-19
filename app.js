@@ -18,38 +18,42 @@ const eventOwner = helpers.getOwner(eventOwnerAndRepo)
 const eventRepo = helpers.getRepo(eventOwnerAndRepo)
 
 async function bulkLabelAdd() {
-  //read contents of action's event.json
-  const eventData = await helpers.readFilePromise('..' + process.env.GITHUB_EVENT_PATH)
-  const eventJSON = JSON.parse(eventData)
+  try {
+    //read contents of action's event.json
+    const eventData = await helpers.readFilePromise('..' + process.env.GITHUB_EVENT_PATH)
+    const eventJSON = JSON.parse(eventData)
 
-  //set eventAction and eventIssueNumber
-  eventAction = eventJSON.action
-  eventIssueNumber = eventJSON.issue.number
-  eventIssueBody = eventJSON.issue.body
+    //set eventAction and eventIssueNumber
+    eventAction = eventJSON.action
+    eventIssueNumber = eventJSON.issue.number
+    eventIssueBody = eventJSON.issue.body
 
-  //if an issue was opened, edited, or reopened
-  if (eventAction === 'opened') {
-    //check if there are bulk labels
-    const bulkLabels = await helpers.getBulkLabels(eventIssueBody)
+    //if an issue was opened, edited, or reopened
+    if (eventAction === 'opened') {
+      //check if there are bulk labels
+      const bulkLabels = await helpers.getBulkLabels(eventIssueBody)
 
-    //if one or more bulk labels
-    if (bulkLabels) {
-      console.log('bulk labels found in issue...')
+      //if one or more bulk labels
+      if (bulkLabels) {
+        console.log('bulk labels found in issue...')
 
-      const repoLabels = await helpers.getRepoLabels(octokit, eventOwner, eventRepo)
+        const repoLabels = await helpers.getRepoLabels(octokit, eventOwner, eventRepo)
 
-      const repoShortLabels = await helpers.addShortLabelName(repoLabels)
+        const repoShortLabels = await helpers.addShortLabelName(repoLabels)
 
-      for (const issueLabel of bulkLabels) {
-        for (const repoLabel of repoShortLabels) {
-          if (issueLabel.toLowerCase() === repoLabel.shortLabelName.toLowerCase()) {
-            console.log('issue label matches repo issue; labeling...')
+        for (const issueLabel of bulkLabels) {
+          for (const repoLabel of repoShortLabels) {
+            if (issueLabel.toLowerCase() === repoLabel.shortLabelName.toLowerCase()) {
+              console.log('issue label matches repo issue; labeling...')
 
-            helpers.addLabel(octokit, eventOwner, eventRepo, eventIssueNumber, repoLabel.name)
+              helpers.addLabel(octokit, eventOwner, eventRepo, eventIssueNumber, repoLabel.name)
+            }
           }
         }
       }
     }
+  } catch (error) {
+    console.log(error)
   }
 }
 
