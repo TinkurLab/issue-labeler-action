@@ -3,7 +3,7 @@
   "version": "0.0.1",
   "description": "A GitHub Action to bulk add labels when creating a new issue.",
   "engines": {
-    "node": ">= 12.22.6"
+    "node": "^16.16.0"
   },
   "main": "app.js",
   "scripts": {
