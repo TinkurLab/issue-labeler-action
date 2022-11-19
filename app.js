@@ -1,4 +1,7 @@
-console.log('started nodejs...')
+require('dotenv').config()
+
+const packageInfo = require('./package.json')
+console.log(`Starting ${packageInfo.name}`)
 
 const helpers = require('./helpers')
 
@@ -6,7 +9,7 @@ const helpers = require('./helpers')
 //more info at https://github.com/octokit/rest.js
 const Octokit = require('@octokit/rest')
 const octokit = new Octokit({
-  auth: `token ${process.env.GITHUB_TOKEN}`
+  auth: `token ${process.env.GITHUB_TOKEN}`,
 })
 
 //set eventOwner and eventRepo based on action's env variables
@@ -16,9 +19,7 @@ const eventRepo = helpers.getRepo(eventOwnerAndRepo)
 
 async function bulkLabelAdd() {
   //read contents of action's event.json
-  const eventData = await helpers.readFilePromise(
-    '..' + process.env.GITHUB_EVENT_PATH
-  )
+  const eventData = await helpers.readFilePromise('..' + process.env.GITHUB_EVENT_PATH)
   const eventJSON = JSON.parse(eventData)
 
   //set eventAction and eventIssueNumber
@@ -35,28 +36,16 @@ async function bulkLabelAdd() {
     if (bulkLabels) {
       console.log('bulk labels found in issue...')
 
-      const repoLabels = await helpers.getRepoLabels(
-        octokit,
-        eventOwner,
-        eventRepo
-      )
+      const repoLabels = await helpers.getRepoLabels(octokit, eventOwner, eventRepo)
 
       const repoShortLabels = await helpers.addShortLabelName(repoLabels)
 
       for (const issueLabel of bulkLabels) {
         for (const repoLabel of repoShortLabels) {
-          if (
-            issueLabel.toLowerCase() === repoLabel.shortLabelName.toLowerCase()
-          ) {
+          if (issueLabel.toLowerCase() === repoLabel.shortLabelName.toLowerCase()) {
             console.log('issue label matches repo issue; labeling...')
 
-            helpers.addLabel(
-              octokit,
-              eventOwner,
-              eventRepo,
-              eventIssueNumber,
-              repoLabel.name
-            )
+            helpers.addLabel(octokit, eventOwner, eventRepo, eventIssueNumber, repoLabel.name)
           }
         }
       }
