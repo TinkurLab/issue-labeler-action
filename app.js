@@ -7,7 +7,7 @@ const helpers = require('./helpers')
 
 //require octokit rest.js
 //more info at https://github.com/octokit/rest.js
-const Octokit = require('@octokit/rest')
+const { Octokit } = require('@octokit/rest')
 const octokit = new Octokit({
   auth: `token ${process.env.GITHUB_TOKEN}`,
 })
@@ -32,6 +32,7 @@ async function bulkLabelAdd() {
     if (eventAction === 'opened') {
       //check if there are bulk labels
       const bulkLabels = await helpers.getBulkLabels(eventIssueBody)
+      console.log('bulkLabels: ', bulkLabels)
 
       //if one or more bulk labels
       if (bulkLabels) {
