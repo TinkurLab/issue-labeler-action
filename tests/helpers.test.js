@@ -1,5 +1,5 @@
 const helpers = require('../helpers')
-let octokit = require('@octokit/rest')()
+const { Octokit } = require('@octokit/rest')
 
 octokit = jest.fn()
 octokit.authenticate = jest.fn()
@@ -22,22 +22,24 @@ describe('getBulkLabels', () => {
   it('should return 1 bulk label if 1 bulk label exist in the issue body', async () => {
     const eventIssueBody = 'checklist\r\n- [ ] to do\r\n[bug]'
     const result = helpers.getBulkLabels(eventIssueBody)
+    console.log('result: ', result)
 
-    expect(Array.isArray(['bug'])).toBe(true)
+    expect(result).toEqual(expect.arrayContaining(['bug']))
   })
 
   it('should return 2 bulk labels if 2 bulk labels exist in the issue body', async () => {
     const eventIssueBody = 'checklist\r\n- [ ] to do\r\n[bug, enh]'
     const result = helpers.getBulkLabels(eventIssueBody)
+    console.log('result: ', result)
 
-    expect(Array.isArray(['bug', 'enh'])).toBe(true)
+    expect(result).toEqual(expect.arrayContaining(['bug', 'enh']))
   })
 
   it('should return 0 bulk labels if 0 bulk labels exist in the issue body', async () => {
     const eventIssueBody = 'checklist\r\n- [ ] to do\r\n'
     const result = helpers.getBulkLabels(eventIssueBody)
 
-    expect(Array.isArray([])).toBe(true)
+    expect(result).toEqual(expect.arrayContaining([]))
   })
 })
 

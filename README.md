@@ -4,7 +4,7 @@ A [GitHub Action](https://github.com/features/actions) to add bulk labels when c
 
 ## How It Works
 
-This GitHub Action runs when an [`issues` event webhook](https://developer.github.com/v3/activity/events/types/#issuesevent) is fired in your GitHub repo. The action checks if there is an array of bulk labels to add `[aaa, bbb, ccc]` in markdown in the issue's description. The action works with existing labels defined in your GitHub repo; the labeler expects the first 3 characters of the label name (ex. `hel` for a "help wanted" label). If there is 1 or > bulk labels, the action labels the issue with the specified label(s).
+This GitHub Action runs when an [`issues` event webhook](https://developer.github.com/v3/activity/events/types/#issuesevent) is fired in your GitHub repo. The action checks if there is an array of bulk labels to add `[aaa, bbb, ccc]` in markdown in the issue's description on a new line. The action works with existing labels defined in your GitHub repo; the labeler expects the first 3 characters of the label name (ex. `hel` for a "help wanted" label). If there is 1 or > bulk labels, the action labels the issue with the specified label(s).
 
 ## Examples
 
@@ -46,8 +46,6 @@ If you have suggestions for how this GitHub Action could be improved, or want to
 
 ## License
 
-[ISC](LICENSE) © 2021 Adam Zolyak <adam@tinkurlab.com> (www.tinkurlab.com)
+[ISC](LICENSE) © 2022 Adam Zolyak <adam@tinkurlab.com> (www.tinkurlab.com)
 
 ![analytics](https://grabify.link/1WWMV5)
-
-

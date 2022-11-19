@@ -1,4 +1,4 @@
-FROM node:14
+FROM node:16
 
 LABEL "com.github.actions.name"="Issue Bulk Labeler"
 LABEL "com.github.actions.description"="Bulk add labels when creating an issue"
